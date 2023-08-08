@@ -36,6 +36,7 @@ export function Carousel(): ReactNode {
           alt={`Cultris II screenshot ${image}`}
           height={455}
           width={768}
+          loading="eager"
         />
       ))}
     </div>
