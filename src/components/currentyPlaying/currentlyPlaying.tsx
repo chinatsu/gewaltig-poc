@@ -12,7 +12,7 @@ export async function CurrentlyPlaying(): Promise<ReactElement | ReactElement[] 
         : getDummyCurrentPlayers()
     );
 
-    if (players.length === 0) {
+    if (players.length === 0 || players == undefined || players == null) {
         return null
     }
 

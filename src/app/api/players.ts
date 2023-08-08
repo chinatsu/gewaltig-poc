@@ -3,7 +3,7 @@ import { getApi } from "./instance";
 
 export async function getCurrentPlayersFromAPI(): Promise<OnlineUser[]> {
     const api = await getApi();
-    const response = await api.get("/currentPlayers"); // TODO: correct url whenever the endpoint exists
+    const response = await api.get("/liveinfo"); // TODO: correct url whenever the endpoint exists
     return response.data;
 }
 

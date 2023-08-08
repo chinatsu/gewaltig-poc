@@ -8,14 +8,14 @@ export async function getApi() {
 
   const client = axios.create({
     baseURL: backendUrl(),
-    timeout: 1000,
+    timeout: 10000,
     headers,
   });
 
   client.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (getEnv().ENVIRONMENT !== "production")
+      if (getEnv().ENVIRONMENT === "development")
         console.log(JSON.stringify(error, null, 2));
       return Promise.reject(error);
     },
@@ -24,7 +24,7 @@ export async function getApi() {
 }
 
 function backendUrl() {
-  return getEnv().ENVIRONMENT === "production"
+  return getEnv().ENVIRONMENT !== "development"
     ? "https://gewaltig.net/api"
     : "http://localhost:8080";
 }
