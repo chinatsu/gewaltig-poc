@@ -18,7 +18,13 @@ export async function CurrentlyPlaying(): Promise<ReactElement | ReactElement[] 
 
     return (
         <section className="flex flex-col gap-6">
-            <h2 className="text-xl">Currently playing</h2>
+            <div className="flex w-full justify-between">
+                <h2 className="text-xl">Currently playing</h2>
+                <div className="flex gap-2">
+                    <div className="flex gap-1 items-center"><div className="h-4 w-4 rounded-full bg-blue-600"></div><p className="text-sm">Online</p></div>
+                    <div className="flex gap-1 items-center"><div className="h-4 w-4 rounded-full bg-slate-600"></div><p className="text-sm">Away</p></div>
+                </div>
+            </div>
             <OnlinePlayers players={players} />
         </section>
     )
