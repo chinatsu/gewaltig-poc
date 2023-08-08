@@ -24,8 +24,8 @@ export function Carousel(): ReactNode {
     }
 
     return <div className="relative">
-        <button onClick={() => changeImage(-1)} className="absolute text-blue-200 h-[479px] left-0 w-8 text-3xl transition-all hover:bg-blue-200 hover:text-black hover:opacity-40">&lt;</button>
-        <button onClick={() => changeImage(1)} className="absolute text-blue-200 h-[479px] right-0 w-8 text-3xl transition-all hover:bg-blue-200 hover:text-black hover:opacity-40">&gt;</button>
+        <button onClick={() => changeImage(-1)} className="absolute text-blue-200 h-full left-0 w-8 text-3xl transition-all hover:bg-blue-200 hover:text-black hover:opacity-40">&lt;</button>
+        <button onClick={() => changeImage(1)} className="absolute text-blue-200 h-full right-0 w-8 text-3xl transition-all hover:bg-blue-200 hover:text-black hover:opacity-40">&gt;</button>
         {images.map((image, idx) => 
             <Image key={`image-${image}`} className={idx !== imageIndex ? "hidden" : ""} src={`/images/${image}.jpg`} alt={`Cultris II screenshot ${image}`} height={455} width={768} />
         )}
