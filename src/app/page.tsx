@@ -1,5 +1,5 @@
 import { Carousel } from '@/components/carousel'
-import { CurrentlyPlaying, CurrentlyPlayingSkeleton } from '@/components/currentlyPlaying'
+import { CurrentlyPlaying, CurrentlyPlayingSkeleton } from '@/components/currentyPlaying/currentlyPlaying'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import { Suspense } from 'react'

@@ -1,4 +1,4 @@
-import { Profile, ProfileSkeleton } from "@/components/profile";
+import { Profile, ProfileSkeleton } from "@/components/profile/profile";
 import { Suspense } from "react";
 
 type PlayerProps = { params: { id: string } };

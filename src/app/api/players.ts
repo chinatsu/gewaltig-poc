@@ -1,7 +1,5 @@
-import { OnlineUser, User } from "../types/players";
+import { OnlineUser, User } from "@/types/players";
 import { getApi } from "./instance";
-
-
 
 export async function getCurrentPlayersFromAPI(): Promise<OnlineUser[]> {
     const api = await getApi();

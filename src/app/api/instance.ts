@@ -15,7 +15,7 @@ export async function getApi() {
   client.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (getEnv().NODE_ENV !== "production")
+      if (getEnv().ENVIRONMENT !== "production")
         console.log(JSON.stringify(error, null, 2));
       return Promise.reject(error);
     },
@@ -24,7 +24,7 @@ export async function getApi() {
 }
 
 function backendUrl() {
-  return getEnv().NODE_ENV === "production"
+  return getEnv().ENVIRONMENT === "production"
     ? "https://gewaltig.net/api"
     : "http://localhost:8080";
 }

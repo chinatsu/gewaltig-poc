@@ -2,13 +2,13 @@ import { z } from "zod"
 
 export type ServerEnv = z.infer<typeof serverEnvSchema>
 export const serverEnvSchema = z.object({
-    NODE_ENV: z.string(),
+    ENVIRONMENT: z.string(),
     TEST_TIMEOUT: z.number(),
 })
 
 export function getEnv(): ServerEnv {
     return {
-        NODE_ENV: process.env.NODE_ENV,
-        TEST_TIMEOUT: 3000
+        ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT ? process.env.NEXT_PUBLIC_ENVIRONMENT : "development",
+        TEST_TIMEOUT: process.env.NEXT_PUBLIC_TEST_TIMEOUT ? parseInt(process.env.NEXT_PUBLIC_TEST_TIMEOUT) : 3000
     }
 }

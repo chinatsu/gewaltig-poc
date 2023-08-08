@@ -1,4 +1,4 @@
-import { OnlineUser, User } from "@/app/types/players"
+import { OnlineUser, User } from "@/types/players"
 import { getEnv } from "@/util/env";
 
 export async function getDummyCurrentPlayers(): Promise<OnlineUser[]> {
