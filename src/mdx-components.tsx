@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import { DetailedHTMLProps, ImgHTMLAttributes, ReactNode } from "react";
 import slugify from "@sindresorhus/slugify";
+import Link from "next/link";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -49,6 +50,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h6 id={slugify(children!!.toString())}>{children}</h6>
     ),
     img: ResponsiveImage,
+    a: ({href, children}: {href?: string, children?: ReactNode}) => (
+      <Link className="text-white" href={href!!}>{children}</Link>
+    ),
     ...components,
   };
 }
