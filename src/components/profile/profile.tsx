@@ -15,7 +15,7 @@ export async function Profile({ userId }: ProfileProps) {
 
   return (
     <main
-      className={`flex min-h-screen flex-col p-8 items-center ${inter.className}`}
+      className={`flex min-h-screen flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
     >
       <PlayerProfile player={player} />
     </main>
@@ -25,12 +25,12 @@ export async function Profile({ userId }: ProfileProps) {
 export async function ProfileSkeleton() {
   return (
     <main
-      className={`flex min-h-screen flex-col p-8 items-center ${inter.className}`}
+      className={`flex min-h-screen flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
       aria-label="Fetching user"
       role="progressbar"
       aria-busy
     >
-      <div className="w-full md:max-w-3xl flex flex-col gap-8" aria-hidden>
+      <div className="w-full md:max-w-3xl flex flex-col gap-8 " aria-hidden>
         <section className="flex gap-2 items-center">
           <div className="h-16 w-16 animate-pulse bg-gray-400"></div>
           <h1 className="h-7 w-32 animate-pulse bg-gray-400 "></h1>

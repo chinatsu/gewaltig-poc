@@ -1,13 +1,14 @@
 import type { MDXComponents } from 'mdx/types'
 import Image, { ImageProps } from 'next/image'
+import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
  
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
 // React component you want, including components from
 // other libraries.
 
-const ResponsiveImage = (props) => (
-    <Image alt={props.alt} width="0" height="0" sizes="100vw" className="w-full h-auto" {...props}  />
+const ResponsiveImage = ({alt, src}: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) => (
+    <Image alt={alt!!} width="0" height="0" sizes="100vw" className="w-full h-auto" src={src!!} />
   );
  
 // This file is required to use MDX in `app` directory.
