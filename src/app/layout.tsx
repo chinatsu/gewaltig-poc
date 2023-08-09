@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import "@/styles/globals.css";
 import { Metadata } from "next";
@@ -14,9 +15,12 @@ export default async function RootLayout({
 }: PropsWithChildren): Promise<ReactElement> {
   return (
     <html lang="en">
-      <body className="dark:bg-slate-900">
+      <body>
+        <div className="dark:bg-slate-900 min-h-screen flex flex-col">
         <Header />
         {children}
+        <Footer />
+        </div>
       </body>
     </html>
   );

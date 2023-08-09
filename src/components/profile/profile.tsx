@@ -15,7 +15,7 @@ export async function Profile({ userId }: ProfileProps) {
 
   return (
     <main
-      className={`flex min-h-screen flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
+      className={`flex-grow flex flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
     >
       <PlayerProfile player={player} />
     </main>
@@ -25,7 +25,7 @@ export async function Profile({ userId }: ProfileProps) {
 export async function ProfileSkeleton() {
   return (
     <main
-      className={`flex min-h-screen flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
+      className={`flex-grow flex flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
       aria-label="Fetching user"
       role="progressbar"
       aria-busy
