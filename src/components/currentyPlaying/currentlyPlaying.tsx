@@ -18,7 +18,7 @@ export async function CurrentlyPlaying(): Promise<
 
   return (
     <section className="flex flex-col gap-6">
-      <div className="flex w-full justify-between">
+      <div className="flex w-full justify-between items-baseline">
         <h2 className="text-xl">Currently playing</h2>
         <div className="flex gap-2">
           <div className="flex gap-1 items-center">

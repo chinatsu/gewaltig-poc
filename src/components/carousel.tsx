@@ -31,11 +31,12 @@ export function Carousel(): ReactNode {
       {images.map((image, idx) => (
         <Image
           key={`image-${image}`}
-          className={idx !== imageIndex ? "hidden" : ""}
+          className={`${idx !== imageIndex ? "hidden" : ""} w-full h-auto`}
           src={`/images/${image}.jpg`}
           alt={`Cultris II screenshot ${image}`}
-          height={455}
-          width={768}
+          height="0"
+          width="0"
+          sizes="100vw"
           loading="eager"
         />
       ))}

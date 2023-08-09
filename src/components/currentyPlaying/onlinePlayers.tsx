@@ -8,9 +8,9 @@ type OnlinePlayersProps = { players: OnlineUser[] };
 
 export function OnlinePlayers({ players }: OnlinePlayersProps) {
   return (
-    <ul className="flex gap-2">
+    <ul className="flex gap-2 !p-0 !m-0">
       {players.map((player) => (
-        <ul key={`player-${player.name}`}>
+        <ul key={`player-${player.name}`} className="!p-0 !m-0">
           <Link
             href={`profile/${player.userId}`}
             className={`${

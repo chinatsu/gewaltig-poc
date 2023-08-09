@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     serverActions: true,
+    mdxRs: true,
   },
   reactStrictMode: true,
   images: {
@@ -10,4 +11,5 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+const withMDX = require('@next/mdx')()
+module.exports = withMDX(nextConfig)

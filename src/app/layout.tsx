@@ -12,7 +12,7 @@ export default async function RootLayout({
 }: PropsWithChildren): Promise<ReactElement> {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="dark:bg-slate-900">{children}</body>
     </html>
   );
 }
