@@ -3,12 +3,10 @@
 import Image from "next/image";
 import { ReactNode, useState } from "react";
 
-export function Carousel(): ReactNode {
+export function Carousel({images}: { images: string[] }): ReactNode {
   // TODO: translation animations :)
 
   const [imageIndex, setImageIndex] = useState(0);
-
-  const images = ["01", "02", "03", "04", "05"];
 
   const changeImage = (direction: number) => {
     setImageIndex(

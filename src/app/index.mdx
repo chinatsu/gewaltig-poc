@@ -16,7 +16,7 @@ This is not your grand mother's Tetris® anymore...
 - [Download for Windows (14MB)](https://gewaltig.net/dl.aspx?v=c2-win)
 - [Download for Mac (8MB)](https://gewaltig.net/dl.aspx?v=c2-osx)
 
-<Carousel />
+<Carousel images={["01", "02", "03", "04", "05"]} />
 <Suspense fallback={<CurrentlyPlayingSkeleton count={2} />}>
   <CurrentlyPlaying />
 </Suspense>
@@ -174,7 +174,7 @@ Below the block options are the settings for the Keyrepeater (or "DAS").
 <table>
   <tbody>
     <tr>
-      <th>Delay</th>
+      <th scope="row">Delay</th>
       <td>
         The higher the delay the longer it takes (the longer you have to keep
         pressing key) before the repeater starts. It has nothing to do with the
@@ -182,7 +182,7 @@ Below the block options are the settings for the Keyrepeater (or "DAS").
       </td>
     </tr>
     <tr>
-      <th>Repeat speed</th>
+      <th scope="row">Repeat speed</th>
       <td>The greater the number the faster the piece moves.</td>
     </tr>
   </tbody>
@@ -218,15 +218,15 @@ You can deactivate them too if you want to... (Playing in class again, huh?)
 <table>
   <tbody>
     <tr>
-      <th>F2</th>
+      <th scope="row">F2</th>
       <td>Restart a challenge/start a round</td>
     </tr>
     <tr>
-      <th>F4</th>
+      <th scope="row">F4</th>
       <td>Go AFK voluntarily</td>
     </tr>
     <tr>
-      <th>F6</th>
+      <th scope="row">F6</th>
       <td>Switch to the next song</td>
     </tr>
   </tbody>
