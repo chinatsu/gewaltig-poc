@@ -8,13 +8,15 @@ type PlayerProfileProps = { player: User };
 
 export function PlayerProfile({ player }: PlayerProfileProps) {
   return (
-    <div className="w-full md:max-w-3xl flex flex-col gap-8">
+    <div className="w-full xl:max-w-6xl flex flex-col gap-8">
       <section className="flex gap-2 items-center">
         <Image
-          src={`https://gravatar.com/avatar/${player.gravatarHash}?s=96&d=mp`}
+          src={`https://gravatar.com/avatar/${player.gravatarHash}?d=mp`}
           alt={`${player.name}'s avatar`}
-          width={64}
-          height={96}
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-16 h-auto"
         />
         <h1 className="text-2xl">{player.name}</h1>
       </section>

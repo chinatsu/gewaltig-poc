@@ -30,7 +30,7 @@ export async function ProfileSkeleton() {
       role="progressbar"
       aria-busy
     >
-      <div className="w-full md:max-w-3xl flex flex-col gap-8 " aria-hidden>
+      <div className="w-full xl:max-w-6xl flex flex-col gap-8" aria-hidden>
         <section className="flex gap-2 items-center">
           <div className="h-16 w-16 animate-pulse bg-gray-400"></div>
           <h1 className="h-7 w-32 animate-pulse bg-gray-400 "></h1>

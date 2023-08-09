@@ -12,7 +12,7 @@ export function OnlinePlayers({ players }: OnlinePlayersProps) {
       {players.map((player) => (
         <ul key={`player-${player.name}`} className="!p-0 !m-0">
           <Link
-            href={`profile/${player.userId}`}
+            href={`/profile/${player.userId}`}
             className={`${
               player.away
                 ? "bg-slate-600 hover:bg-blue-800"
