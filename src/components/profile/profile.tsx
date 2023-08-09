@@ -1,5 +1,5 @@
-import { getPlayerFromAPI } from "@/app/api/players";
-import { getDummyPlayer } from "@/app/api/test/players";
+import { getPlayerFromAPI } from "@/api/players";
+import { getDummyPlayer } from "@/api/test/players";
 import { getEnv } from "@/util/env";
 import { Inter } from "next/font/google";
 import { PlayerProfile } from "./player";

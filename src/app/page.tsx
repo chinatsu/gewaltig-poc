@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import IndexContent from './index.mdx'
+import IndexContent from "./index.mdx";
 
 const inter = Inter({ subsets: ["latin"] });
 

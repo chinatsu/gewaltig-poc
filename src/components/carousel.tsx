@@ -11,7 +11,10 @@ export function Carousel(): ReactNode {
   const images = ["01", "02", "03", "04", "05"];
 
   const changeImage = (direction: number) => {
-    setImageIndex(((imageIndex+direction) % images.length + images.length) % images.length); // don't you love negative modulo in javascript...
+    setImageIndex(
+      (((imageIndex + direction) % images.length) + images.length) %
+        images.length,
+    ); // don't you love negative modulo in javascript...
   };
 
   return (

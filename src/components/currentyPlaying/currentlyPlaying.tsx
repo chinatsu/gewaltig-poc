@@ -1,5 +1,5 @@
-import { getCurrentPlayersFromAPI } from "@/app/api/players";
-import { getDummyCurrentPlayers } from "@/app/api/test/players";
+import { getCurrentPlayersFromAPI } from "@/api/players";
+import { getDummyCurrentPlayers } from "@/api/test/players";
 import { getEnv } from "@/util/env";
 import { ReactElement } from "react";
 import { range } from "remeda";
