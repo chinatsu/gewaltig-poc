@@ -2,7 +2,6 @@
 const nextConfig = {
   experimental: {
     // serverActions: true, // not needed at the moment
-    mdxRs: true,
   },
   reactStrictMode: true,
   images: {

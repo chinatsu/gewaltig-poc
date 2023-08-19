@@ -39,7 +39,7 @@ export function LiveInfo({ data }: LiveInfoProps) {
         <h2>Rooms</h2>
         <div>
           {data.rooms.filter((room) => room.players > 0).map((room) => (
-            <div>
+            <div key={room.id}>
               <h3>{room.name}</h3>
               <ul className="list-none flex flex-wrap">
                 {data.players.filter((player) => player.status === "room" && player.room === room.id).map((player) => (
@@ -78,12 +78,4 @@ export function LiveInfo({ data }: LiveInfoProps) {
       }
     </section>
   );
-
-  <ul className="flex flex-wrap gap-2 !p-0 !m-0">
-    {data.players.map((player) => (
-      <ul key={`player-${player.name}`} className="!p-0 !m-0">
-
-      </ul>
-    ))}
-  </ul>
 }
