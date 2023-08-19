@@ -24,7 +24,7 @@ export async function getApi() {
 }
 
 function backendUrl() {
-  return getEnv().ENVIRONMENT === "development"
+  return getEnv().ENVIRONMENT !== "development"
     ? "https://gewaltig.net/api"
     : "http://localhost:8080";
 }
