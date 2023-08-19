@@ -1,4 +1,3 @@
-
 import { getDummyPlayer } from "@/api/test/players";
 import { getEnv } from "@/util/env";
 import { Inter } from "next/font/google";

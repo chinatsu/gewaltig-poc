@@ -115,6 +115,7 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
             <article key={challenge[0]}>
               <h3>{challengeNameToTitle(challenge[0])}</h3>
               {relevantScore(challenge[0], challenge[1])}
+              <p>Achieved on {format(new Date(challenge[1].date), "LLLL do yyyy")}</p>
             </article>
           ))}
         </section>
