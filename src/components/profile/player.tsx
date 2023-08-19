@@ -23,16 +23,15 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
   }
 
   const secondsToTime = (duration: number) => {
-    const milliseconds = Math.floor((duration * 1000) % 100) / 100;
-    const seconds = Math.floor((duration) % 60);
+    const seconds = (duration) % 60;
     const minutes = Math.floor((duration / 60) % 60);
     const hours = Math.floor((duration / (60 * 60)) % 24);
 
     const displayHours = (hours < 10) ? "0" + hours : hours;
     const displayMinutes = (minutes < 10) ? "0" + minutes : minutes;
-    const displaySeconds = (seconds < 10) ? "0" + seconds : seconds;
+    const displaySeconds = (seconds < 10) ? "0" + seconds.toFixed(3) : seconds.toFixed(3);
 
-    return (displayHours === "00" ? "" : displayHours + ":") + displayMinutes + ":" + displaySeconds + "." + milliseconds;
+    return (displayHours === "00" ? "" : displayHours + ":") + displayMinutes + ":" + displaySeconds;
   }
 
 
