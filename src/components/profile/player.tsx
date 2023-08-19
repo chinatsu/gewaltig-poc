@@ -120,7 +120,7 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
                 </tr>
               </thead>
               <tbody>
-              {Object.entries(player.challenges).map((challenge) => (
+              {Object.entries(player.challenges).filter((challenge) => challengeNameToTitle(challenge[0]) !== undefined).map((challenge) => (
                 <tr key={challenge[0]}>
                   <th>{challengeNameToTitle(challenge[0])}</th>
                   <td>{relevantScore(challenge[0], challenge[1])}</td>
