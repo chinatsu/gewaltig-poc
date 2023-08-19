@@ -23,14 +23,13 @@ export default async function Achievements() {
                 <Suspense fallback={<ProfileSkeleton /> /* TODO: fix this silly skeleton */}>
                     <ul className="list-none">
                         {Object.entries(achievements)
-                            .filter((cheevo) => cheevo[1].isPublic)
                             .sort((cheevoA, cheevoB) => cheevoB[1].count - cheevoA[1].count)
                             .map((cheevo) => (
                                 <li key={cheevo[0]}>
                                     <h2 className="text-2xl mb-2">{cheevo[1].title}</h2>
-                                    <p>{cheevo[1].points} points</p>
-                                    <p>{cheevo[1].count} players</p> {/* TODO: sort out player percentage */}
                                     <p className="italic">{cheevo[1].description}</p>
+                                    <p>{cheevo[1].points} point{cheevo[1].points > 1 && "s"}</p>
+                                    <p>{cheevo[1].count} players</p> {/* TODO: sort out player percentage */}
                                 </li>
                             ))}
                     </ul>
