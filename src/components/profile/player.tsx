@@ -111,13 +111,24 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
       {player.challenges && (
         <section className="prose prose-slate dark:prose-invert">
           <h2>Challenges</h2>
-          {Object.entries(player.challenges).map((challenge) => (
-            <article key={challenge[0]}>
-              <h3>{challengeNameToTitle(challenge[0])}</h3>
-              {relevantScore(challenge[0], challenge[1])}
-              <p>Achieved on {format(new Date(challenge[1].date), "LLLL do yyyy")}</p>
-            </article>
-          ))}
+          <table className="w-full">
+              <thead>
+                <tr className="border-b">
+                  <th>Challenge</th>
+                  <th>Personal best</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+              {Object.entries(player.challenges).map((challenge) => (
+                <tr key={challenge[0]}>
+                  <th>{challengeNameToTitle(challenge[0])}</th>
+                  <td>{relevantScore(challenge[0], challenge[1])}</td>
+                  <td>{format(new Date(challenge[1].date), "LLLL do yyyy")}</td>
+                </tr>
+              ))}
+              </tbody>
+          </table>
         </section>
       )}
     </div>
