@@ -24,7 +24,7 @@ export default async function Achievements() {
                     <ul className="list-none">
                         {Object.entries(achievements)
                             .filter((cheevo) => cheevo[1].isPublic)
-                            .sort((cheevo) => cheevo[1].count)
+                            .sort((cheevoA, cheevoB) => cheevoA[1].count - cheevoB[1].count)
                             .map((cheevo) => (
                                 <li key={cheevo[0]}>
                                     <h2 className="text-2xl mb-2">{cheevo[1].title}</h2>
