@@ -1,8 +1,9 @@
-import { getPlayerFromAPI } from "@/api/players";
+
 import { getDummyPlayer } from "@/api/test/players";
 import { getEnv } from "@/util/env";
 import { Inter } from "next/font/google";
 import { PlayerProfile } from "./player";
+import { getPlayerFromAPI } from "@/api/endpoints";
 
 type ProfileProps = { userId: string };
 

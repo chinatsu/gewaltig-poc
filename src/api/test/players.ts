@@ -1,25 +1,6 @@
-import { OnlineUser, User } from "@/types/players";
+import { User } from "@/types/players";
 import { getEnv } from "@/util/env";
 
-export async function getDummyCurrentPlayers(): Promise<OnlineUser[]> {
-  const users: OnlineUser[] = [
-    {
-      name: "sad",
-      away: false,
-      gravatarHash: "18bf032e4f6dfee92e5b05d9c4c0fd6e",
-      userId: 8918,
-    },
-    {
-      name: "Shay",
-      away: true,
-      gravatarHash: "e195120a8c7ad45b5b8cd19cc6095366",
-      userId: 5840,
-    },
-  ];
-
-  await new Promise((res) => setTimeout(res, getEnv().TEST_TIMEOUT));
-  return Promise.resolve(users);
-}
 
 export async function getDummyPlayer(userId: string): Promise<User> {
   await new Promise((res) => setTimeout(res, getEnv().TEST_TIMEOUT));

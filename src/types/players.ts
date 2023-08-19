@@ -23,9 +23,15 @@ export const userSchema = z.object({
 
 export type OnlineUser = z.infer<typeof onlineUserSchema>;
 export const onlineUserSchema = z.object({
+  id: z.number(),
   name: z.string(),
-  away: z.boolean(),
-  gravatarHash: z.string(),
-  userId: z.number(),
-  // TODO: other fields!
+  guest: z.boolean(),
+  currentscore: z.number(),
+  afk: z.boolean(),
+  room: z.boolean().or(z.number()), 
+  team: z.boolean().or(z.string()),
+  challenge: z.string(),
+  avatarhash: z.string(),
+  status: z.string(),
+  country: z.string(),
 });

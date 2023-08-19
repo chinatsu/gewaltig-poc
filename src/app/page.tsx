@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
-import IndexContent from "./index.mdx";
+import { Suspense } from "react";
+import { CurrentlyPlaying, CurrentlyPlayingSkeleton } from "@/components/liveInfo/currentlyPlaying";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +12,9 @@ export default async function Home() {
       className={`flex-grow flex flex-col p-8 items-center ${inter.className}`}
     >
       <div className="w-full xl:max-w-6xl prose prose-slate dark:prose-invert">
-        <IndexContent />
+        <Suspense fallback={<CurrentlyPlayingSkeleton count={2} />}>
+          <CurrentlyPlaying />
+        </Suspense>
       </div>
     </main>
   );
