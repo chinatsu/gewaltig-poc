@@ -63,7 +63,7 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
         <h1 className="text-2xl">{player.name}</h1>
       </section>
       {player.stats && (
-        <section>
+        <section className="w-full prose prose-slate dark:prose-invert">
           <table className="w-full">
             <tbody>
               <tr className="border-b">
@@ -103,13 +103,13 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
         </section>
       )}
       {player.achievements && (
-        <section className="prose prose-slate dark:prose-invert">
+        <section className="w-full prose prose-slate dark:prose-invert">
           <h2>Achievements</h2>
           <p>Achievements have been achieved! (work in progress)</p>
         </section>
       )}
       {player.challenges && (
-        <section className="prose prose-slate dark:prose-invert">
+        <section className="w-full prose prose-slate dark:prose-invert">
           <h2>Challenges</h2>
           <table className="w-full">
               <thead>
