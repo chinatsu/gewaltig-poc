@@ -49,6 +49,10 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
     return challenges.get(challengeName)
   }
 
+  const challengeOrder = (challengeName: string) => {
+    return ["ol-maserati", "ol-survivor", "ol-cheese", "ol-send", "ol-ten", "ol-clewett", "ol-qs", "ol-tgm"].indexOf(challengeName)
+  }
+
   return (
     <div className="w-full xl:max-w-6xl flex flex-col gap-8">
       <section className="flex gap-2 items-center">
@@ -112,22 +116,25 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
         <section className="max-w-full prose prose-slate dark:prose-invert">
           <h2>Challenges</h2>
           <table className="w-full">
-              <thead>
-                <tr className="border-b">
-                  <th>Challenge</th>
-                  <th>Personal best</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-              {Object.entries(player.challenges).filter((challenge) => challengeNameToTitle(challenge[0]) !== undefined).map((challenge) => (
-                <tr key={challenge[0]}>
-                  <th>{challengeNameToTitle(challenge[0])}</th>
-                  <td>{relevantScore(challenge[0], challenge[1])}</td>
-                  <td>{format(new Date(challenge[1].date), "LLLL do yyyy")}</td>
-                </tr>
-              ))}
-              </tbody>
+            <thead>
+              <tr className="border-b">
+                <th>Challenge</th>
+                <th>Personal best</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(player.challenges)
+                .filter((challenge) => challengeNameToTitle(challenge[0]) !== undefined)
+                .sort((challenge) => challengeOrder(challenge[0]))
+                .map((challenge) => (
+                  <tr key={challenge[0]}>
+                    <th>{challengeNameToTitle(challenge[0])}</th>
+                    <td>{relevantScore(challenge[0], challenge[1])}</td>
+                    <td>{format(new Date(challenge[1].date), "LLLL do yyyy")}</td>
+                  </tr>
+                ))}
+            </tbody>
           </table>
         </section>
       )}
