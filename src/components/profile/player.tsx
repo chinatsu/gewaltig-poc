@@ -37,14 +37,14 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
 
   const relevantScore = (challengeName: string, challengeScore: any) => {
     const challenges = new Map<string, React.ReactNode>;
-    challenges.set('ol-maserati', <p>{secondsToTime(challengeScore.playDuration)}, {challengeScore.blocks} blocks</p>);
+    challenges.set('ol-maserati', <p>{secondsToTime(challengeScore.playDuration)} ({challengeScore.blocks} blocks)</p>);
     challenges.set('ol-survivor', <p>{secondsToTime(challengeScore.playDuration)}</p>);
-    challenges.set('ol-cheese', <p>{secondsToTime(challengeScore.playDuration)}, {challengeScore.blocks} blocks</p>);
-    challenges.set('ol-send', <p>{challengeScore.sent} lines sent</p>);
+    challenges.set('ol-cheese', <p>{secondsToTime(challengeScore.playDuration)} ({challengeScore.blocks} blocks)</p>);
+    challenges.set('ol-send', <p>{challengeScore.linesSent} lines</p>);
     challenges.set('ol-ten', <p>{secondsToTime(challengeScore.playDuration)}</p>);
-    challenges.set('ol-clewett', <p>{challengeScore.tetrii} tetrises, {secondsToTime(challengeScore.playDuration)}</p>);
+    challenges.set('ol-clewett', <p>{challengeScore.tetrii} tetrises</p>);
     challenges.set('ol-qs', <p>{secondsToTime(challengeScore.playDuration)}</p>);
-    challenges.set('ol-tgm', <p>{challengeScore.linesCleared} lines, {secondsToTime(challengeScore.playDuration)}</p>);
+    challenges.set('ol-tgm', <p>{challengeScore.linesCleared} lines</p>);
 
     return challenges.get(challengeName)
   }
@@ -103,13 +103,13 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
         </section>
       )}
       {player.achievements && (
-        <section>
+        <section className="prose prose-slate dark:prose-invert">
           <h2>Achievements</h2>
-          <p>Achievements have been achieved!</p>
+          <p>Achievements have been achieved! (work in progress)</p>
         </section>
       )}
       {player.challenges && (
-        <section>
+        <section className="prose prose-slate dark:prose-invert">
           <h2>Challenges</h2>
           {Object.entries(player.challenges).map((challenge) => (
             <article key={challenge[0]}>
