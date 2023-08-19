@@ -19,4 +19,13 @@ export const userSchema = z.object({
       name: z.string(),
     })
     .optional(),
+  achievements: z.record(z.string(), z.string()).optional(),
+  challenges: z.record(z.string(), z.object({
+    playDuration: z.number(),
+    blocks: z.number(),
+    date: z.string(),
+    linesCleared: z.number(),
+    linesSent: z.number(),
+    tetrii: z.number(),
+  })).optional()
 });

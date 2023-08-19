@@ -7,6 +7,49 @@ import Image from "next/image";
 type PlayerProfileProps = { player: User };
 
 export function PlayerProfile({ player }: PlayerProfileProps) {
+
+  const challengeNameToTitle = (challengeName: string) => {
+    const challenges = new Map<string, string>;
+    challenges.set('ol-maserati', 'Maserati');
+    challenges.set('ol-survivor', 'Survivor');
+    challenges.set('ol-cheese', 'Swiss cheese');
+    challenges.set('ol-send', '49.6 µFortnight');
+    challenges.set('ol-ten', 'Ten');
+    challenges.set('ol-clewett', "James Clewett's");
+    challenges.set('ol-qs', 'Quickstart');
+    challenges.set('ol-tgm', 'Shi Tai Ye');
+
+    return challenges.get(challengeName)
+  }
+
+  const secondsToTime = (duration: number) => {
+    const milliseconds = ((duration * 1000) % 1000) / 100;
+    const seconds = Math.floor((duration) % 60);
+    const minutes = Math.floor((duration / 60) % 60);
+    const hours = Math.floor((duration / (60 * 60)) % 24);
+
+    const displayHours = (hours < 10) ? "0" + hours : hours;
+    const displayMinutes = (minutes < 10) ? "0" + minutes : minutes;
+    const displaySeconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    return (displayHours === "00" ? "" : displayHours + ":") + displayMinutes + ":" + displaySeconds + "." + milliseconds;
+  }
+
+
+  const relevantScore = (challengeName: string, challengeScore: any) => {
+    const challenges = new Map<string, React.ReactNode>;
+    challenges.set('ol-maserati', <p>{secondsToTime(challengeScore.playDuration)}, {challengeScore.blocks} blocks</p>);
+    challenges.set('ol-survivor', <p>{secondsToTime(challengeScore.playDuration)}</p>);
+    challenges.set('ol-cheese', <p>{secondsToTime(challengeScore.playDuration)}, {challengeScore.blocks} blocks</p>);
+    challenges.set('ol-send', <p>{challengeScore.sent} lines sent</p>);
+    challenges.set('ol-ten', <p>{secondsToTime(challengeScore.playDuration)}</p>);
+    challenges.set('ol-clewett', <p>{challengeScore.tetrii} tetrises, {secondsToTime(challengeScore.playDuration)}</p>);
+    challenges.set('ol-qs', <p>{secondsToTime(challengeScore.playDuration)}</p>);
+    challenges.set('ol-tgm', <p>{challengeScore.linesCleared} lines, {secondsToTime(challengeScore.playDuration)}</p>);
+
+    return challenges.get(challengeName)
+  }
+
   return (
     <div className="w-full xl:max-w-6xl flex flex-col gap-8">
       <section className="flex gap-2 items-center">
@@ -58,6 +101,23 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
               </tr>
             </tbody>
           </table>
+        </section>
+      )}
+      {player.achievements && (
+        <section>
+          <h2>Achievements</h2>
+          <p>Achievements have been achieved!</p>
+        </section>
+      )}
+      {player.challenges && (
+        <section>
+          <h2>Challenges</h2>
+          {Object.entries(player.challenges).map((challenge) => (
+            <article key={challenge[0]}>
+              <h3>{challengeNameToTitle(challenge[0])}</h3>
+              {relevantScore(challenge[0], challenge[1])}
+            </article>
+          ))}
         </section>
       )}
     </div>
