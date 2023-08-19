@@ -131,7 +131,7 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
                   <tr key={challenge[0]}>
                     <th>{challengeNameToTitle(challenge[0])}</th>
                     <td>{relevantScore(challenge[0], challenge[1])}</td>
-                    <td>{format(new Date(challenge[1].date), "LLLL do yyyy")} ({formatDistanceToNow(new Date(challenge[1].date), {addSuffix: true}})</td>
+                    <td>{format(new Date(challenge[1].date), "LLLL do yyyy")} ({formatDistanceToNow(new Date(challenge[1].date), {addSuffix: true})})</td>
                   </tr>
                 ))}
             </tbody>
