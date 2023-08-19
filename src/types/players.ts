@@ -20,18 +20,3 @@ export const userSchema = z.object({
     })
     .optional(),
 });
-
-export type OnlineUser = z.infer<typeof onlineUserSchema>;
-export const onlineUserSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  guest: z.boolean(),
-  currentscore: z.number(),
-  afk: z.boolean(),
-  room: z.boolean().or(z.number()), 
-  team: z.boolean().or(z.string()),
-  challenge: z.string(),
-  avatarhash: z.string(),
-  status: z.string(),
-  country: z.string(),
-});

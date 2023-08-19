@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-
 export function Footer() {
     return <footer className="bg-slate-700 w-screen p-4 text-white">
         <p>©2011-2023 GEWALTIG entertainment</p>
