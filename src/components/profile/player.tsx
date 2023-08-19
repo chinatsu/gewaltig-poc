@@ -126,7 +126,7 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
             <tbody>
               {Object.entries(player.challenges)
                 .filter((challenge) => challengeNameToTitle(challenge[0]) !== undefined)
-                .sort((challenge) => challengeOrder(challenge[0]))
+                .sort((challengeA, challengeB) => challengeOrder(challengeA[0]) - challengeOrder(challengeB[0]))
                 .map((challenge) => (
                   <tr key={challenge[0]}>
                     <th>{challengeNameToTitle(challenge[0])}</th>
