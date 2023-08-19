@@ -23,7 +23,7 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
   }
 
   const secondsToTime = (duration: number) => {
-    const milliseconds = ((duration * 1000) % 1000) / 100;
+    const milliseconds = Math.floor((duration * 1000) % 100) / 100;
     const seconds = Math.floor((duration) % 60);
     const minutes = Math.floor((duration / 60) % 60);
     const hours = Math.floor((duration / (60 * 60)) % 24);
