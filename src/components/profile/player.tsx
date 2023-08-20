@@ -162,7 +162,7 @@ export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
                 <tr key={achievement[0]}>
                   <th>{achievements[achievement[0]].title}</th>
                   <td>{achievements[achievement[0]].points}</td>
-                  <td>{format(new Date(achievement[1]), "LLLL do yyyy")} ({formatDistanceToNow(new Date(achievement[1]), {addSuffix: true})}}</td>
+                  <td>{format(new Date(achievement[1]), "LLLL do yyyy")} ({formatDistanceToNow(new Date(achievement[1]), {addSuffix: true})}</td>
                 </tr>
               ))}
             </tbody>
