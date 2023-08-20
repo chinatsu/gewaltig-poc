@@ -158,7 +158,7 @@ export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(player.achievements).sort((a, b) => achievements[a[0]].points - achievements[b[0]].points).map((achievement) => (
+              {Object.entries(player.achievements).sort((a, b) => achievements[b[0]].points - achievements[a[0]].points).map((achievement) => (
                 <tr key={achievement[0]}>
                   <th>{achievements[achievement[0]].title}</th>
                   <td>{achievements[achievement[0]].points}</td>
