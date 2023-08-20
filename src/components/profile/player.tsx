@@ -54,10 +54,6 @@ export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
     return ["ol-maserati", "ol-survivor", "ol-cheese", "ol-send", "ol-ten", "ol-clewett", "ol-qs", "ol-tgm"].indexOf(challengeName)
   }
 
-  const achievementNameToAchievement = (achievementName: string) => {
-    return achievements[achievementName]
-  }
-
   return (
     <div className="w-full xl:max-w-6xl flex flex-col gap-8">
       <section className="flex gap-2 items-center">
@@ -105,8 +101,9 @@ export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
               </tr>
               <tr className="border-b">
                 <th className="text-left w-1/2">Achievement score</th>
-                <td>{player.achievements 
+                <td>{player.achievements
                   ? Object.entries(player.achievements)
+                    .filter((cheevo) => cheevo[0] in achievements)
                     .map((achievement) => achievements[achievement[0]].points)
                     .reduce((acc, score) => acc + score)
                   : 0}
@@ -139,7 +136,7 @@ export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
                   <tr key={challenge[0]}>
                     <th>{challengeNameToTitle(challenge[0])}</th>
                     <td>{relevantScore(challenge[0], challenge[1])}</td>
-                    <td>{format(new Date(challenge[1].date), "LLLL do yyyy")} ({formatDistanceToNow(new Date(challenge[1].date), {addSuffix: true})})</td>
+                    <td>{format(new Date(challenge[1].date), "LLLL do yyyy")} ({formatDistanceToNow(new Date(challenge[1].date), { addSuffix: true })})</td>
                   </tr>
                 ))}
             </tbody>
@@ -158,13 +155,16 @@ export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(player.achievements).sort((a, b) => achievements[b[0]].points - achievements[a[0]].points).map((achievement) => (
-                <tr key={achievement[0]}>
-                  <th>{achievements[achievement[0]].title}</th>
-                  <td>{achievements[achievement[0]].points}</td>
-                  <td>{format(new Date(achievement[1]), "LLLL do yyyy")} ({formatDistanceToNow(new Date(achievement[1]), {addSuffix: true})})</td>
-                </tr>
-              ))}
+              {Object.entries(player.achievements)
+                .filter((cheevo) => cheevo[0] in achievements)
+                .sort((a, b) => achievements[b[0]].points - achievements[a[0]].points)
+                .map((achievement) => (
+                  <tr key={achievement[0]}>
+                    <th>{achievements[achievement[0]].title}</th>
+                    <td>{achievements[achievement[0]].points}</td>
+                    <td>{format(new Date(achievement[1]), "LLLL do yyyy")} ({formatDistanceToNow(new Date(achievement[1]), { addSuffix: true })})</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </section>
