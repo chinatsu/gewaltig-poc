@@ -1,12 +1,13 @@
 "use client";
 
+import { Achievements } from "@/types/achievements";
 import { User } from "@/types/players";
 import { format, formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 
-type PlayerProfileProps = { player: User };
+type PlayerProfileProps = { player: User, achievements: Achievements };
 
-export function PlayerProfile({ player }: PlayerProfileProps) {
+export function PlayerProfile({ player, achievements }: PlayerProfileProps) {
 
   const challengeNameToTitle = (challengeName: string) => {
     const challenges = new Map<string, string>;
@@ -51,6 +52,10 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
 
   const challengeOrder = (challengeName: string) => {
     return ["ol-maserati", "ol-survivor", "ol-cheese", "ol-send", "ol-ten", "ol-clewett", "ol-qs", "ol-tgm"].indexOf(challengeName)
+  }
+
+  const achievementNameToAchievement = (achievementName: string) => {
+    return achievements[achievementName]
   }
 
   return (
@@ -99,17 +104,20 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
                 <td>{player.stats.wins}</td>
               </tr>
               <tr className="border-b">
+                <th className="text-left w-1/2">Achievement score</th>
+                <td>{player.achievements 
+                  ? Object.entries(player.achievements)
+                    .map((achievement) => achievements[achievement[0]].points)
+                    .reduce((acc, score) => acc + score)
+                  : 0}
+                </td>
+              </tr>
+              <tr className="border-b">
                 <th className="text-left w-1/2">Created</th>
                 <td>{format(new Date(player.created), "LLLL do yyyy")}</td>
               </tr>
             </tbody>
           </table>
-        </section>
-      )}
-      {player.achievements && (
-        <section className="max-w-full prose prose-slate dark:prose-invert">
-          <h2>Achievements</h2>
-          <p>Achievements have been achieved! (work in progress)</p>
         </section>
       )}
       {player.challenges && (
@@ -134,6 +142,29 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
                     <td>{format(new Date(challenge[1].date), "LLLL do yyyy")} ({formatDistanceToNow(new Date(challenge[1].date), {addSuffix: true})})</td>
                   </tr>
                 ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+      {player.achievements && (
+        <section className="max-w-full prose prose-slate dark:prose-invert">
+          <h2>Achievements</h2>
+          <table className="w-full">
+            <thead>
+              <tr className="border-b">
+                <th>Achievement</th>
+                <th>Points</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(player.achievements).sort((a, b) => achievements[a[0]].points - achievements[b[0]].points).map((achievement) => (
+                <tr key={achievement[0]}>
+                  <th>{achievements[achievement[0]].title}</th>
+                  <td>{achievements[achievement[0]].points}</td>
+                  <td>{format(new Date(achievement[1]), "LLLL do yyyy")} ({formatDistanceToNow(new Date(achievement[1]), {addSuffix: true})}}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>

@@ -2,7 +2,8 @@ import { getDummyPlayer } from "@/api/test/players";
 import { getEnv } from "@/util/env";
 import { Inter } from "next/font/google";
 import { PlayerProfile } from "./player";
-import { getPlayerFromAPI } from "@/api/endpoints";
+import { getAchievementsFromAPI, getPlayerFromAPI } from "@/api/endpoints";
+import { getDummyAchievements } from "@/api/test/achievements";
 
 type ProfileProps = { userId: string };
 
@@ -13,11 +14,15 @@ export async function Profile({ userId }: ProfileProps) {
     ? getPlayerFromAPI(userId)
     : getDummyPlayer(userId));
 
+  const achievements = await (getEnv().ENVIRONMENT !== "development"
+    ? getAchievementsFromAPI()
+    : getDummyAchievements()); // TODO: cache this one, it's not necessary to fetch all the time
+
   return (
     <main
       className={`flex-grow flex flex-col p-8 items-center dark:text-slate-300 ${inter.className}`}
     >
-      <PlayerProfile player={player} />
+      <PlayerProfile player={player} achievements={achievements} />
     </main>
   );
 }
