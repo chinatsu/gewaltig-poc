@@ -14,6 +14,8 @@ export default async function Achievements() {
         ? getAchievementsFromAPI()
         : getDummyAchievements());
 
+    const activePlayers = achievements["fb"].count; // let's say every player who has sent a single line is an active player
+
     return (
         <main
             className={`flex-grow flex flex-col p-8 items-center  ${inter.className}`}
@@ -29,7 +31,7 @@ export default async function Achievements() {
                                     <h2 className="text-2xl mb-2">{cheevo[1].title}</h2>
                                     <p className="italic">{cheevo[1].description}</p>
                                     <p>{cheevo[1].points} point{cheevo[1].points > 1 && "s"}</p>
-                                    <p>{cheevo[1].count} players</p> {/* TODO: sort out player percentage */}
+                                    <p>{cheevo[1].count} players ({(cheevo[1].count / activePlayers * 100).toFixed(2)}%)</p> {/* TODO: sort out player percentage */}
                                 </li>
                             ))}
                     </ul>
